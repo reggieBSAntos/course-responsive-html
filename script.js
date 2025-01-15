@@ -85,5 +85,8 @@ function checkFlexGap() {
 }
 checkFlexGap();
 
-// https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js
-console.log("netlify");
+function test() {
+  console.log("netlify");
+}
+
+test();

@@ -1,0 +1,259 @@
+/* rem and em do not depend on HTML font-size in media queries, never use rem in media queries */
+
+/**************************/
+/* BELOW 1344px (smaller desktops) */
+/**************************/
+@media (max-width: 84em) {
+  html {
+    font-size: 81.25%;
+  }
+  .hero {
+    max-width: 120rem;
+  }
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/**************************/
+/* BELOW 1200px (Landscape tablet) */
+/**************************/
+
+@media (max-width: 75em) {
+  html {
+    font-size: 62.5%;
+  }
+}
+/**************************/
+/* BELOW 940px (Tablet) */
+/**************************/
+@media (max-width: 59em) {
+  html {
+    font-size: 56.25%;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 0 calc(var(--space-2xl) * 3);
+  }
+  .hero-image {
+    width: 60%;
+    align-self: center;
+    display: none;
+  }
+  .hero-text-box,
+  .hero-image-box {
+    text-align: center;
+  }
+  .delivered-meals {
+    justify-content: center;
+  }
+  .section-testimonials {
+    grid-template-columns: 1fr;
+  }
+  .gallery {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .cta {
+    grid-template-columns: 3fr 2fr;
+  }
+  .cta-form {
+    grid-template-columns: 1fr;
+  }
+  .btn--form {
+    margin-top: var(--space-sm);
+  }
+  .btn-mobile-nav {
+    display: block;
+    z-index: 100;
+  }
+  .main-nav {
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(10px);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+    transform: translateX(100%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    transition: all 0.35s ease-in;
+
+    /* Can't use display none because can't add animation */
+    /* 1. Hide it visually */
+    opacity: 0;
+
+    /* 2. Make it unaccessible to mouse and keyboard */
+    pointer-events: none;
+
+    /* 3. Hide it from screen readers */
+    visibility: none;
+  }
+  .nav-open .main-nav {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+
+    transform: translateX(0);
+  }
+  .nav-open .icon-mobile-nav[name="close-outline"] {
+    display: block;
+  }
+  .nav-open .icon-mobile-nav[name="menu-outline"] {
+    display: none;
+  }
+  .main-nav-list {
+    flex-direction: column;
+    gap: var(--space-2xl);
+  }
+  .main-nav-link:link,
+  .main-nav-link:visited {
+    font-size: var(--font-xl);
+  }
+}
+/**************************/
+/* BELOW 700px (Smaller Tablet) */
+/**************************/
+@media (max-width: 44em) {
+  .grid--3-cols,
+  .grid--4-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .diets {
+    grid-column: 1/-1;
+    justify-self: center;
+  }
+  .pricing-plan {
+    width: 100%;
+  }
+  .grid--footer {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .logo-col,
+  .address-col {
+    grid-column: span 3;
+  }
+  .nav-col {
+    grid-row: 1;
+    grid-column: span 2;
+    margin-bottom: var(--space-xl);
+  }
+}
+
+/**************************/
+/* BELOW 544px (Phones) */
+/**************************/
+@media (max-width: 34em) {
+  .hero {
+    padding: 0 var(--space-xl);
+  }
+  .grid {
+    row-gap: var(--space-xl);
+  }
+  .grid--2-cols,
+  .grid--3-cols,
+  .grid--4-cols {
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+
+  .btn:link,
+  .btn:visited {
+    padding: 1.62rem 2.06rem;
+  }
+  .logos img {
+    height: var(--space-xs);
+  }
+  .step-img-box:nth-child(2) {
+    grid-row: 1;
+  }
+  .step-img-box:nth-child(6) {
+    grid-row: 5;
+  }
+  .step-img-box {
+    transform: translateY(var(--space-lg));
+  }
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .cta {
+    grid-template-columns: 1fr;
+  }
+  .cta-img-box {
+    height: 32rem;
+    grid-row: 1;
+  }
+  .testimonial,
+  .feature {
+    display: flex;
+    gap: var(--space-lg);
+    justify-content: center;
+    align-items: top;
+  }
+  .feature *,
+  .testimonial * {
+    margin: 0;
+  }
+  .testimonial-text {
+    margin-bottom: var(--space-sm);
+  }
+  .btn[href="#how"] {
+    margin: 10px;
+  }
+}
+
+/* FIXING SAFARI FLEX BOX GAP */
+
+.no-flexbox-gap .main-nav-list li:not(:last-child) {
+  margin-right: 4.8rem;
+}
+
+.no-flexbox-gap .list-item:not(:last-child) {
+  margin-bottom: 1.6rem;
+}
+
+.no-flexbox-gap .list-icon:not(:last-child) {
+  margin-right: 1.6rem;
+}
+
+.no-flexbox-gap .delivered-faces {
+  margin-right: 1.6rem;
+}
+
+.no-flexbox-gap .meal-attribute:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+.no-flexbox-gap .meal-icon {
+  margin-right: 1.6rem;
+}
+
+.no-flexbox-gap .footer-row div:not(:last-child) {
+  margin-right: 6.4rem;
+}
+
+.no-flexbox-gap .social-links li:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+.no-flexbox-gap .footer-nav li:not(:last-child) {
+  margin-bottom: 2.4rem;
+}
+
+@media (max-width: 75em) {
+  .no-flexbox-gap .main-nav-list li:not(:last-child) {
+    margin-right: 3.2rem;
+  }
+}
+
+@media (max-width: 59em) {
+  .no-flexbox-gap .main-nav-list li:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 4.8rem;
+  }
+}
